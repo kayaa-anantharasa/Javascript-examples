@@ -1,0 +1,186 @@
+//basic array destructuring
+let numbers = [1, 2, 3, 4, 5];
+let [n1, n2] = numbers;
+console.log(n1, n2);
+
+//Skipping items in an array
+let [s1, , , s4] = ["Hello", "I", "am", "Alexa"];
+
+console.log(s1);
+console.log(s4);
+
+
+//assigning the rest of an array
+let [s1, ...s2] = ["Hello", "I", "am", "Sarah"];
+
+console.log(s1);
+console.log(s2);
+
+//Default values can be assigned to the variables
+let [greeting = "hi",name = "sara"] = ["hello","Alexa"];
+
+//Swapping Variables
+let a = 6;
+let b = 7;
+[a, b] = [b, a];
+console.log(a, b);
+
+// Merging arrays using spread operator
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const mergedArray = [...arr1, ...arr2];
+console.log(mergedArray);
+
+//Destructuring  with Functions
+function printArray([first, second]) {
+  console.log(first);
+  console.log(second);
+}
+
+let numbers = [1, 2, 3, 4];
+printArray(numbers);
+
+
+
+
+
+//Object Destructuring
+let user = { name: "Arun", country: "Srilanka", job: "Front end Developer" };
+
+let { name, country, job } = user;
+
+console.log(name);
+console.log(country);
+console.log(job);
+
+//Variables declared before being assigned
+
+let person = { name: "Sarah", country: "Nigeria", job: "Developer" };
+let name, country, job;
+
+{ name, country, job } = person;
+
+
+
+console.log(name);// Error : "Unexpected token ="
+
+let person = { name: "Sarah", country: "Nigeria", job: "Developer" };
+let name, country, job;
+
+({ name, country, job } = person)
+
+console.log(name);
+
+
+//should have the same name as a property key in the object person. If the names are different, we'll get undefined:
+
+let person = { name: "Sarah", country: "Nigeria", job: "Developer" };
+
+let { name, friends, job } = person;
+
+console.log(name);
+console.log(friends);
+
+// if we want to use a new variable name, well, we can.
+
+//We can also set default values when we assign values to a new variable, otherwise undefined
+let person = { name: "Sarah", country: "Nigeria", job: "Developer" };
+
+let { name: foo, job: bar } = person;
+
+console.log(foo);
+console.log(bar);
+
+//
+let person = [
+  { name: "Sarah", country: "Nigeria", job: "Developer" },
+  { name: "Alex", country: "India", job: "QA" }
+];
+
+let { name: n1, job: n2 } = person[0];
+
+console.log(n1);
+console.log(n2);
+
+let { name: n1, age, job: n2 } = person[0];
+console.log(age);
+
+
+//Computed Property Name
+const propName = 'name';
+const { [propName]: personName } = { name: 'Alex' };
+console.log(personName);
+
+
+
+//Combining Arrays with Objects
+const user = {
+  name: 'Alex',
+  age: 25,
+  address: {
+    city: 'New York',
+    country: 'USA'
+  }
+};
+
+let { name: foo, address: bar } = person;
+
+console.log(foo);
+console.log(bar);
+
+//Nesting in Object Destructuring
+const user = {
+  name: 'Alice',
+  age: 25,
+  address: {
+    city: 'New York',
+    country: 'USA'
+  }
+};
+
+const { name, address: { city } } = user;
+console.log(name, city);
+
+
+//Rest in Object Destructuring
+let person = { name: "Sarah", country: "Nigeria", job: "Developer", friends: ["Annie", "Becky"] };
+
+let { name, friends, ...others } = person;
+
+console.log(name);
+console.log(friends);
+console.log(others);
+
+//object merging 
+
+let person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 25,
+};
+
+let job = {
+    jobTitle: 'Front end Developer',
+    location: 'UK'
+};
+
+let employee = {...person,...job};
+
+console.log(employee);
+
+//Object Destructuring and Functions
+function printPersonInfo({ name, age, country }) {
+  console.log(`Name: ${name}`);
+  console.log(`Age: ${age}`);
+  console.log(`Country: ${country}`);
+}
+
+// Define an object
+const person = {
+  name: 'John',
+  age: 30,
+  country: 'USA'
+};
+
+// Call the function and pass the object as an argument
+printPersonInfo(person);
